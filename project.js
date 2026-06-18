@@ -13,6 +13,6 @@ function createProject(title, description) {
 }
 
 function addTodoToProject(project, todo) {
-    console.log("added")
+    // console.log("added")
     project.todos.push(todo);
 }

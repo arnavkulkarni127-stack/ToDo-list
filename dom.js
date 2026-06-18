@@ -15,6 +15,9 @@ function renderProject(projectArray) {
         let projectdiv = document.createElement("div");
         projectdiv.textContent = project.title;
         projectdiv.classList.add("project-item");
+        if (project.id === getSelectedProjectid()) {
+            projectdiv.classList.add("active");
+        }
         projectContainer.appendChild(projectdiv);
 
         projectdiv.addEventListener("click", function showTodo() {

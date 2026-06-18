@@ -1,11 +1,12 @@
 import createProject, { addTodoToProject } from "./project.js"
 import createTodo from "./todo.js";
-import newProject from "./app.js";
+import newProject, { getSelectedProjectid, setSelectedProjectId } from "./app.js";
 import renderProject, { renderTodo } from "./dom.js";
 import { getProject } from "./app.js";
 
 const defaultProject = createProject("default", "asdfghj");
 newProject(defaultProject);
+setSelectedProjectId(defaultProject.id);
 const inboxProject = createProject(
     "Inbox",
     "General tasks"
@@ -47,6 +48,14 @@ const todo4 = createTodo(
     "Low",
     "2026-06-17"
 );
+
+const todo5 = createTodo(
+    "Morning workout",
+    "30 minutes of exercise",
+    "Low",
+    "2026-06-17"
+);
+addTodoToProject(defaultProject, todo5)
 addTodoToProject(inboxProject, todo1);
 
 addTodoToProject(odinProject, todo2);
@@ -58,6 +67,16 @@ newProject(odinProject);
 newProject(personalProject);
 
 let projectArray = getProject();
+console.log(projectArray)
 
 renderProject(getProject());
-renderTodo(projectArray[2]);
+const selectedProject = getProject().find(project => {
+    console.log("found");
+    return project.id === getSelectedProjectid(defaultProject.id);
+
+});
+console.log(getSelectedProjectid());
+console.log(getProject());
+console.log(selectedProject);
+
+renderTodo(selectedProject);
