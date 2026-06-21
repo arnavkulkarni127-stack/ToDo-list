@@ -39,7 +39,13 @@ function loadProject() {
     }
 }
 
+function deleteProject(id) {
+    projects = projects.filter(project => {
+        return project.id !== id;
+    });
 
+    saveProject();
+}
 
 
 export {
@@ -48,7 +54,8 @@ export {
     setSelectedProjectId,
     saveProject,
     loadProject,
-    newProject
+    newProject,
+    deleteProject
 
 
 };

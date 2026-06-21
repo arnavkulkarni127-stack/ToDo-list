@@ -5,7 +5,8 @@ import {
     getSelectedProjectId,
     saveProject,
     loadProject,
-    newProject
+    newProject,
+    deleteProject
 } from "./app.js";
 import createProject, { addTodoToProject } from "./project.js";
 import createTodo from "./todo.js";
@@ -22,10 +23,19 @@ function renderProject(projectArray) {
         if (project.id === getSelectedProjectId()) {
             projectdiv.classList.add("active");
         }
+
+        const projectTitle = document.createElement("span");
+        projectTitle.textContent = project.title;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "🗑️";
+
+        projectdiv.appendChild(projectTitle);
+        projectdiv.appendChild(deleteButton);
         projectContainer.appendChild(projectdiv);
 
         projectdiv.addEventListener("click", function showTodo() {
-            const allProjects = document.querySelectorAll(".project-item");
+            const allProjects = document.querySelectorAll("project-item");
             allProjects.forEach(project => {
                 project.classList.remove("active");
             });
@@ -35,6 +45,31 @@ function renderProject(projectArray) {
             renderProjectInfo(project);
             renderTodo(project);
         })
+        deleteButton.addEventListener("click", (event) => {
+
+            event.stopPropagation();
+
+            if (getProject().length === 1) {
+                return;
+            }
+
+            deleteProject(project.id);
+
+            const remainingProjects = getProject();
+
+            setSelectedProjectId(remainingProjects[0].id);
+            projectContainer.textContent = "";
+            renderProject(remainingProjects);
+
+            const selectedProject = remainingProjects.find(projectItem => {
+                return projectItem.id === getSelectedProjectId();
+            });
+
+            renderProjectInfo(selectedProject);
+
+            todoContainer.innerHTML = "";
+            renderTodo(selectedProject);
+        });
 
     });
 }
