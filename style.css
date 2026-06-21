@@ -5,3 +5,30 @@
 .active {
     font-weight: bold;
 }
+
+#content {
+    display: flex;
+    min-height: 100vh;
+}
+
+#projects {
+    width: 250px;
+    border-style: solid;
+    border-color: aqua;
+}
+
+#todos {
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    flex: 1;
+
+}
+
+
+.hidden {
+    display: none;
+}
+
+#titleRow {
+    display: flex;
+}

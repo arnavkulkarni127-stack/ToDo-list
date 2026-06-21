@@ -10,11 +10,61 @@
 
 <body>
 
+
+    <header id="header">
+        Todo List
+    </header>
+
     <div id="content">
+        <aside id="projects-section">
 
-        <div id="projects"></div>
-        <div id="todos"></div>
+            <div id="projects"></div>
 
+            <button id="add-project-btn">Add Project</button>
+
+            <form id="project-form" class="hidden">
+
+                <input type="text" id="project-title" placeholder="Project title" required>
+
+                <textarea id="project-description" placeholder="Project description"></textarea>
+
+                <button type="submit">Create Project</button>
+
+            </form>
+
+        </aside>
+
+        <main id="todos">
+
+            <section id="project-info"> </section>
+
+            <button id="add-todo-btn">Add Todo </button>
+
+            <form id="todo-form" class="hidden">
+
+                <input type="text" id="todo-title">
+
+                <textarea id="todo-description"></textarea>
+
+                <select id="todo-priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+
+                <input type="date" id="todo-date">
+
+                <button type="submit" id="submitTodo">Add Todo</button>
+
+            </form>
+
+
+
+
+
+            <section id="todo-list"></section>
+
+        </main>
     </div>
 
     <script type="module" src="./index.js"></script>
