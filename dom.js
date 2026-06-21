@@ -12,9 +12,12 @@ import createProject, { addTodoToProject } from "./project.js";
 import createTodo from "./todo.js";
 
 //variable declaration
-
+const addProjectBtn = document.getElementById("add-project-btn");
+const projectForm = document.getElementById("project-form");
 const projectContainer = document.getElementById("projects");
 const todoContainer = document.getElementById("todo-list");
+const addTodoBtn = document.getElementById("add-todo-btn");
+const todoForm = document.getElementById("todo-form");
 function renderProject(projectArray) {
     projectArray.forEach(project => {
         let projectdiv = document.createElement("div");
@@ -167,8 +170,7 @@ function renderProjectInfo(project) {
 
 
 // add a Todo
-const addTodoBtn = document.getElementById("add-todo-btn");
-const todoForm = document.getElementById("todo-form");
+
 addTodoBtn.addEventListener("click", () => {
     console.log("hey")
     todoForm.classList.remove("hidden");
@@ -205,12 +207,11 @@ todoForm.addEventListener("submit", () => {
     //     todoDate
     // );
 })
-//  End...
 
-// adding project ui getter
+//  end...
+// adding a project
 
-const addProjectBtn = document.getElementById("add-project-btn");
-const projectForm = document.getElementById("project-form");
+
 addProjectBtn.addEventListener("click", () => {
     projectForm.classList.remove("hidden");
 });
@@ -238,5 +239,7 @@ projectForm.addEventListener("submit", (event) => {
     projectForm.classList.add("hidden");
 
 });
+
+///  ...end...
 export { renderTodo, renderProjectInfo };
 export default renderProject;

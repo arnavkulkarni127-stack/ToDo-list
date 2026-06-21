@@ -56,7 +56,5 @@ export {
     loadProject,
     newProject,
     deleteProject
-
-
 };
 export default newProject;  

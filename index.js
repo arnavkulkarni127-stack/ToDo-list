@@ -26,18 +26,14 @@ let projectArray = getProject();
 if (projectArray.length > 0) {
     setSelectedProjectId(projectArray[0].id);
 }
-// console.log(projectArray)
 
 renderProject(getProject());
-// console.log(getProject());
-// console.log(getSelectedProjectId());
+
 const selectedProject = getProject().find(project => {
     return project.id === getSelectedProjectId();
 
 });
-console.log(getSelectedProjectId());
-console.log(getProject());
-console.log(selectedProject);
+
 renderProjectInfo(selectedProject);
 
 renderTodo(selectedProject);

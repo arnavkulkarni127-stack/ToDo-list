@@ -15,7 +15,6 @@ function createProject(title, description) {
 }
 
 function addTodoToProject(project, todo) {
-    // console.log("added")
     project.todos.push(todo);
     saveProject();
 
